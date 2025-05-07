@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NetShield - Unificado</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: monospace;
+      background-color: #0d0d0d;
+      color: white;
+    }
+
+    .centered, .centered-column {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    button {
+      background: #00bfff;
+      color: white;
+      cursor: pointer;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .progress-bar {
+      width: 300px;
+      height: 20px;
+      background: #333;
+      border-radius: 15px;
+      overflow: hidden;
+      margin-top: 20px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: #00bfff;
+      transition: width 0.1s linear;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Login -->
+  <div class="centered" id="loginContainer">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Usuário">
+    <input type="password" id="password" placeholder="Senha">
+    <button onclick="login()">Entrar</button>
+  </div>
+
+  <!-- Análise automática pós-login -->
+  <div class="centered-column hidden" id="analiseContent">
+    <h2>Analisando rede...</h2>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+  </div>
+
+  <!-- Página Principal -->
+  <div class="centered hidden" id="mainContent">
+    <h1>Rede segura!</h1>
+    <p>Deseja analisar novamente?</p>
+    <div>
+      <button onclick="mostrarTela('analiseContent', true)">Sim</button>
+      <button onclick="mostrarTela('paginaFutura')">Não</button>
+    </div>
+  </div>
+
+  <!-- Página Futura -->
+  <div class="centered hidden" id="paginaFutura">
+    <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NetShield</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+        
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000000;
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    header {
+      background-color: #0a1a3f;
+      padding: 1rem;
+      text-align: right;
+      animation: fadeInDown 1s ease-out;
+    }
+
+    header nav {
+      display: inline-block;
+      font-size: 0.9rem;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin: 2rem 0 1rem 0;
+      animation: fadeIn 1s ease-out;
+    }
+
+    .dashboard {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      max-width: 1000px;
+      margin: auto;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .card {
+      background-color: #111;
+      border-radius: 10px;
+      padding: 1rem;
+      width: 300px;
+      text-align: left;
+      box-shadow: 0 0 10px rgba(0, 170, 255, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h2 {
+      color: #888;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .status {
+      color: #00aaff;
+      font-size: 1.2rem;
+    }
+
+    .overview ul, .activity ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .overview li, .activity li {
+      margin: 0.3rem 0;
+    }
+
+    footer {
+      margin: 2rem 0;
+    }
+
+    .socials i {
+      margin: 0 1rem;
+      font-size: 1.5rem;
+    }
+
+    canvas {
+      width: 100% !important;
+      height: 200px !important;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+      </a>
+  <nav>
+    <span>Português ▾</span> &nbsp;
+    <span>Apps</span> &nbsp;
+    <span>Learn</span> &nbsp;
+    <span>Data</span> &nbsp;
+    <span>Sobre</span> &nbsp;
+    <span>👤</span>
+  </nav>
+</header>
+
+<h1>NetShield</h1>
+
+<div class="dashboard">
+  <div class="card">
+    <h2>Status</h2>
+    <p class="status">Rede segura</p>
+  </div>
+
+  <div class="card">
+    <h2>Tráfego (Download/Upload)</h2>
+    <canvas id="trafegoGrafico"></canvas>
+  </div>
+
+  <div class="card overview">
+    <h2>Visão Geral</h2>
+    <ul>
+      <li>Nome da Rede: <strong>NetShield123</strong></li>
+      <li>Criptografia: WPA2</li>
+      <li>Endereço IP: 192.168.0.1</li>
+      <li>Ameaças: Detectadas ⚠️</li>
+    </ul>
+  </div>
+
+  <div class="card activity">
+    <h2>Atividade Recente</h2>
+    <ul>
+      <li>1 min atrás - Conexão suspeita bloqueada</li>
+      <li>15 min atrás - Dispositivo conectado</li>
+      <li>30 min atrás - Dispositivo desconectado</li>
+      <li>45 min atrás - Varredura de rede concluída</li>
+    </ul>
+  </div>
+</div>
+
+<footer>
+  <div class="socials">
+    <i>📷</i>
+    <i>📘</i>
+    <i>🐦</i>
+  </div>
+</footer>
+
+<script>
+  const ctx = document.getElementById('trafegoGrafico').getContext('2d');
+  const trafegoGrafico = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00'],
+      datasets: [
+        {
+          label: 'Download (Mbps)',
+          data: [20, 35, 40, 50, 45, 60],
+          borderColor: '#00aaff',
+          backgroundColor: 'rgba(0, 170, 255, 0.1)',
+          fill: true,
+          tension: 0.3
+        },
+        {
+          label: 'Upload (Mbps)',
+          data: [10, 15, 20, 25, 20, 30],
+          borderColor: '#ffaa00',
+          backgroundColor: 'rgba(255, 170, 0, 0.1)',
+          fill: true,
+          tension: 0.3
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
+
+  </div>
+
+  <script>
+    function login() {
+      const user = document.getElementById('username').value;
+      const pass = document.getElementById('password').value;
+
+      if (user === 'admin' && pass === '1234') {
+        mostrarTela('analiseContent');
+        iniciarProgresso(() => {
+          mostrarTela('mainContent');
+        });
+      } else {
+        alert("Usuário ou senha inválidos.");
+      }
+    }
+
+    function mostrarTela(id, reiniciar = false) {
+      const sections = ['loginContainer', 'mainContent', 'analiseContent', 'paginaFutura'];
+      sections.forEach(section => {
+        document.getElementById(section).classList.add('hidden');
+      });
+      document.getElementById(id).classList.remove('hidden');
+
+      if (id === 'analiseContent' && reiniciar) {
+        iniciarProgresso(() => {
+          mostrarTela('mainContent');
+        });
+      }
+    }
+
+    function iniciarProgresso(callback) {
+      const fill = document.getElementById('progressFill');
+      let width = 0;
+      fill.style.width = '0%';
+
+      const interval = setInterval(() => {
+        if (width >= 100) {
+          clearInterval(interval);
+          callback();
+        } else {
+          width += 1;
+          fill.style.width = width + '%';
+        }
+      }, 30);
+    }
+  </script>
+</body>
+</html>
